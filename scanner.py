@@ -47,13 +47,6 @@ from checkers.gfg_checker import (
     check_gfg
 )
 
-from checkers.instagram_checker import (
-    check_instagram
-)
-
-from checkers.twitter_checker import (
-    check_twitter
-)
 
 from correlation.confidence_scorer import (
     calculate_confidence
