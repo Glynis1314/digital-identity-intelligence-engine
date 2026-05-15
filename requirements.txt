@@ -1,0 +1,6 @@
+streamlit
+selenium
+pandas
+plotly
+reportlab
+webdriver-manager

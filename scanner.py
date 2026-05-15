@@ -1,3 +1,4 @@
+import os
 from concurrent.futures import ThreadPoolExecutor
 
 from database import save_scan
@@ -6,11 +7,25 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 
-from extractors.username_extractor import extract_usernames
+from webdriver_manager.chrome import (
+    ChromeDriverManager
+)
 
-from checkers.github_checker import check_github
-from checkers.reddit_checker import check_reddit
-from checkers.leetcode_checker import check_leetcode
+from extractors.username_extractor import (
+    extract_usernames
+)
+
+from checkers.github_checker import (
+    check_github
+)
+
+from checkers.reddit_checker import (
+    check_reddit
+)
+
+from checkers.leetcode_checker import (
+    check_leetcode
+)
 
 from checkers.hackerrank_checker import (
     check_hackerrank
@@ -92,18 +107,28 @@ def create_driver():
     )
 
     # =========================
-    # Browser Settings
+    # Deployment Safe Options
     # =========================
 
     options.add_argument("--headless")
+
+    options.add_argument("--no-sandbox")
+
+    options.add_argument(
+        "--disable-dev-shm-usage"
+    )
 
     options.add_argument(
         "--window-size=1920,1080"
     )
 
-    driver_path = "drivers/chromedriver.exe"
+    # =========================
+    # Auto Install ChromeDriver
+    # =========================
 
-    service = Service(driver_path)
+    service = Service(
+        ChromeDriverManager().install()
+    )
 
     driver = webdriver.Chrome(
         service=service,
