@@ -84,9 +84,7 @@ def get_scan_history():
     SELECT
         id,
         email,
-        scan_time,
-        results,
-        pdf_path
+        scan_time
 
     FROM scans
 

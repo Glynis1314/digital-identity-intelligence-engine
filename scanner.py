@@ -179,11 +179,7 @@ def scan_username(email, username):
 
             check_medium(driver, username),
 
-            check_gfg(driver, username),
-
-            check_instagram(driver, username),
-
-            check_twitter(driver, username)
+            check_gfg(driver, username)
 
         ]
 
